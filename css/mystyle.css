@@ -1,0 +1,86 @@
+body{
+    background-color: rgb(193, 221, 180);
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+header {
+    background-color: white;
+}
+
+select {
+    height: 100%;
+}
+
+.my-btn{
+    background-color: rgb(221, 33, 33);
+    color: white;
+    padding: .5rem 2rem;
+    border: none;
+    box-shadow: 1px 1px 1px black;
+}
+
+.my-grid-container{
+    width: 500px;
+    height:500px;
+    margin: 0 auto;
+}
+
+.my-grid-square{
+    border: 1px solid;
+    float: left;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+/* % red  */
+.my-grid-square-one{
+    width: calc(100% / 10);
+    height:calc(100% / 10);
+    border-color: red;
+    
+}
+
+.background-red{
+    background-color: red;
+    color: white;
+    box-shadow: -1px -1px 1px rgb(206, 26, 26);
+}
+
+.border-red{
+    border: 1px solid red;
+}
+
+/* % blue */
+.my-grid-square-two{
+    width: calc(100% / 9);
+    height: calc(100% / 9);
+    border-color: blue;
+}
+
+.background-blue{
+    background-color: blue;
+    color: white;
+    box-shadow: -1px -1px 1px rgb(22, 22, 180);
+}
+
+.border-blue{
+    border: 1px solid blue;
+}
+
+/* % green */
+.my-grid-square-three{
+    width: calc(100% / 7);
+    height: calc(100% / 7);
+    border-color: green;
+}
+
+.background-green{
+    background-color: green;
+    color: white;
+    box-shadow: -1px -1px 1px rgb(7, 105, 7);
+}
+
+.border-green{
+    border: 1px solid green;
+}
