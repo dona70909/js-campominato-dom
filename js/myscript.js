@@ -105,9 +105,6 @@ function drawBox(outsideElement,classNameOne,classNameTwo,classNameThree,N,class
             } 
         });
     }
-    
-    
-    
 }
 
 /**
