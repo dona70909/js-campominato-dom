@@ -24,7 +24,7 @@ btnPlay.addEventListener("click", function(){
             });  
         } */
 
-        drawBox(gridContainer,"my-grid-square","my-grid-square-one","background-orange",100,"border-red", false);
+        drawBox(gridContainer,"my-grid-square","my-grid-square-one","background-orange",100,false);
         
     } else if(selectValue == 2) {
         // % without the function
@@ -38,7 +38,7 @@ btnPlay.addEventListener("click", function(){
                 divElement.classList.add("background-blue"); 
             });
         } */
-        drawBox(gridContainer,"my-grid-square","my-grid-square-two","background-blue",81,"border-blue", false);
+        drawBox(gridContainer,"my-grid-square","my-grid-square-two","background-blue",81, false);
         
     } else if (selectValue == 3){
         // % without the function
@@ -53,7 +53,7 @@ btnPlay.addEventListener("click", function(){
             });
         } */
         
-        drawBox(gridContainer,"my-grid-square","my-grid-square-three","background-green",49,"border-green", false);
+        drawBox(gridContainer,"my-grid-square","my-grid-square-three","background-green",49,false);
         
     } else {
         console.log("scegli");
@@ -82,7 +82,7 @@ btnPlay.addEventListener("click", function(){
 // nel caso in cui clicco su una bomba
 
 
-function drawBox(outsideElement,classNameOne,classNameTwo,classNameThree,N,classBorderContainer,gameOver){
+function drawBox(outsideElement,classNameOne,classNameTwo,classNameThree,N,gameOver){
     const arrayNumbersFunction = randomNumber(N,1);
     console.log(arrayNumbersFunction);
     // # creates an array of 16 numbers each one between a range (1 and numberOfSquares(THAT I CALLED N))
@@ -93,7 +93,6 @@ function drawBox(outsideElement,classNameOne,classNameTwo,classNameThree,N,class
     for (let i = 0; i < N ;i++){
         let insideElement = document.createElement("div");
         outsideElement.appendChild(insideElement);
-        outsideElement.classList.add(classBorderContainer);
         insideElement.classList.add(classNameOne,classNameTwo);
         
         /* checkNumberBomb(arrayBombs, arrayNumbersFunction[i],"back-bomb",classNameThree,insideElement) */
