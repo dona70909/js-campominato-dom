@@ -92,6 +92,7 @@ function drawBox(outsideElement,classNameOne,classNameTwo,classNameThree,N,gameO
     console.log(arrayBombs);
     for (let i = 0; i < N ;i++){
         let insideElement = document.createElement("div");
+        
         outsideElement.appendChild(insideElement);
         insideElement.classList.add(classNameOne,classNameTwo);
         
