@@ -7,7 +7,7 @@ btnPlay.addEventListener("click", function(){
     // ogni volta che clicco play resetto tutto
     // # reset to " " of the innerHtml under the div.my-grid-container
     gridContainer.innerHTML = "";
-
+    
     
     let selectValue = document.getElementById("my-select").value;
     
@@ -23,7 +23,7 @@ btnPlay.addEventListener("click", function(){
                 divElement.classList.add("background-red"); 
             });  
         } */
-
+        
         drawBox(gridContainer,"my-grid-square","my-grid-square-one","background-orange",100,false);
         
     } else if(selectValue == 2) {
@@ -90,11 +90,14 @@ function drawBox(outsideElement,classNameOne,classNameTwo,classNameThree,N,gameO
     
     let score = 0;
     console.log(arrayBombs);
+    
+    const arrayOfDiv = [];
     for (let i = 0; i < N ;i++){
         let insideElement = document.createElement("div");
-        
+        arrayOfDiv.push(insideElement);
         outsideElement.appendChild(insideElement);
         insideElement.classList.add(classNameOne,classNameTwo);
+        
         
         /* checkNumberBomb(arrayBombs, arrayNumbersFunction[i],"back-bomb",classNameThree,insideElement) */
         // £ event click and the background changes
@@ -102,16 +105,23 @@ function drawBox(outsideElement,classNameOne,classNameTwo,classNameThree,N,gameO
             if(!gameOver){
                 // # check if the Number inside the square is equal to a bomb number
                 insideElement.innerHTML = arrayNumbersFunction[i];
-                if(!checkNumberBomb(arrayBombs, arrayNumbersFunction[i],"back-bomb",classNameThree,insideElement)){
+                if(!checkNumberBomb(arrayBombs, arrayNumbersFunction[i])){
+                    insideElement.classList.add(classNameThree);
                     score ++;
                     document.getElementById("my-output-score").innerHTML = "Hai vinto, score " + score;
                 } else {
+                    checkArray (arrayBombs,arrayNumbersFunction,arrayOfDiv,"back-bomb"); 
+                    insideElement.classList.add("back-bomb"); 
                     document.getElementById("my-output-score").innerHTML = "Hai perso " + score;
                     gameOver = true;
                 } 
+                
+                
             }
         });
     }
+    
+    console.log(arrayOfDiv);
 }
 
 /**
@@ -136,14 +146,29 @@ function randomNumber(N,min){
 
 
 // # check if the Number inside the square is equal to a bomb number
-function checkNumberBomb (array,number,classOne,classTwo,element){
+function checkNumberBomb (array,number){
     for(let i = 0; i < array.length; i++){
         if(array.includes(number)){
-            element.classList.add(classOne);
             return true;
-        } else {
-            element.classList.add(classTwo);
-        }
+        } 
     }
 }
+/* checkArray (arrayBombs,arrayNumbersFunction,arrayOfDiv,"back-bomb"); */
+function checkArray (array,arrayToCheck,arrayParent,classBomb){
+    for(let i = 0; i < arrayToCheck.length; i++){
+        for(let c = 0; c < array.length ; c++){
+            if(arrayToCheck[i] === array[c]){
+                arrayParent[i].classList.add(classBomb);
+                arrayParent[i].innerHTML = arrayToCheck[i];
+            } else {
+                console.log("non sono una bomba");
+                
+            }
+        }
+    }
+
+    console.log(arrayToCheck);
+    console.log(array);
+    console.log(arrayParent);
+} 
 
