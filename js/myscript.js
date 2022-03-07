@@ -23,8 +23,8 @@ btnPlay.addEventListener("click", function(){
                 divElement.classList.add("background-red"); 
             });  
         } */
+
         drawBox(gridContainer,"my-grid-square","my-grid-square-one","background-orange",100,"border-red", false);
-        
         
     } else if(selectValue == 2) {
         // % without the function
@@ -60,6 +60,7 @@ btnPlay.addEventListener("click", function(){
     }
     
 });
+
 
 /**
 * 
