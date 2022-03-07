@@ -4,8 +4,10 @@ btnPlay.addEventListener("click", function(){
     
     const gridContainer = document.querySelector(".my-grid-container");
     
+    // ogni volta che clicco play resetto tutto
     // # reset to " " of the innerHtml under the div.my-grid-container
     gridContainer.innerHTML = "";
+
     
     let selectValue = document.getElementById("my-select").value;
     
@@ -25,7 +27,7 @@ btnPlay.addEventListener("click", function(){
             
             
         } */
-        drawBox(gridContainer,"my-grid-square","my-grid-square-one","background-orange",100,"border-red");
+        drawBox(gridContainer,"my-grid-square","my-grid-square-one","background-orange",100,"border-red", false);
         
         
     } else if(selectValue == 2) {
@@ -40,7 +42,7 @@ btnPlay.addEventListener("click", function(){
                 divElement.classList.add("background-blue"); 
             });
         } */
-        drawBox(gridContainer,"my-grid-square","my-grid-square-two","background-blue",81,"border-blue");
+        drawBox(gridContainer,"my-grid-square","my-grid-square-two","background-blue",81,"border-blue", false);
         
     } else if (selectValue == 3){
         // % without the function
@@ -55,7 +57,7 @@ btnPlay.addEventListener("click", function(){
             });
         } */
         
-        drawBox(gridContainer,"my-grid-square","my-grid-square-three","background-green",49,"border-green");
+        drawBox(gridContainer,"my-grid-square","my-grid-square-three","background-green",49,"border-green", false);
         
     } else {
         console.log("scegli");
@@ -79,7 +81,11 @@ btnPlay.addEventListener("click", function(){
 */
 // % random + drowbox
 
-function drawBox(outsideElement,classNameOne,classNameTwo,classNameThree,N,classBorderContainer){
+// quanti sono i casi possibili quando clicchiamo? 2 : o è una bomba o non è una bomba
+// nel caso in cui clicco su una bomba
+
+
+function drawBox(outsideElement,classNameOne,classNameTwo,classNameThree,N,classBorderContainer, gameOver){
     const arrayNumbersFunction = randomNumber(N,1);
     console.log(arrayNumbersFunction);
     // # create an array of 16 numbers each one between a range (1 and numberOfSquares(THAT I CALLED N))
@@ -96,13 +102,16 @@ function drawBox(outsideElement,classNameOne,classNameTwo,classNameThree,N,class
         /* checkNumberBomb(arrayBombs, arrayNumbersFunction[i],"back-bomb",classNameThree,insideElement) */
         // £ event click and the background changes
         insideElement.addEventListener("click", function() {
-            // # check if the Number inside the square is equal to a bomb number
-            if(!checkNumberBomb(arrayBombs, arrayNumbersFunction[i],"back-bomb",classNameThree,insideElement)){
-                score ++;
-                document.getElementById("my-output-score").innerHTML = "Hai vinto, score " + score;
-            } else {
-                document.getElementById("my-output-score").innerHTML = "Hai perso " + score;
-            } 
+            if(!gameOver){
+                // # check if the Number inside the square is equal to a bomb number
+                if(!checkNumberBomb(arrayBombs, arrayNumbersFunction[i],"back-bomb",classNameThree,insideElement)){
+                    score ++;
+                    document.getElementById("my-output-score").innerHTML = "Hai vinto, score " + score;
+                } else {
+                    document.getElementById("my-output-score").innerHTML = "Hai perso " + score;
+                    gameOver = true;
+                } 
+            }
         });
     }
 }
