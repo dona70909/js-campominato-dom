@@ -80,8 +80,11 @@ btnPlay.addEventListener("click", function(){
 // % random + drowbox
 function drawBox(outsideElement,classNameOne,classNameTwo,classNameThree,N,classBorderContainer){
     const arrayNumbersFunction = randomNumber(N,1);
+    console.log(arrayNumbersFunction);
     // # create an array of 16 numbers each one between a range (1 and numberOfSquares(THAT I CALLED N))
     const arrayBombs = randomNumber(numberBombs,1);
+
+    let score = 0;
     console.log(arrayBombs);
     for (let i = 0; i < N ;i++){
         let insideElement = document.createElement("div");
@@ -91,9 +94,13 @@ function drawBox(outsideElement,classNameOne,classNameTwo,classNameThree,N,class
         insideElement.innerHTML = arrayNumbersFunction[i];
         // £ event click and the background changes
         insideElement.addEventListener("click", function(){
-            /*insideElement.classList.add(classNameThree);*/
             // # check if the Number inside the square is equal to a bomb number
-            checkNumberBomb(arrayBombs, arrayNumbersFunction[i],"back-bomb",classNameThree,insideElement);
+            if(!checkNumberBomb(arrayBombs, arrayNumbersFunction[i],"back-bomb",classNameThree,insideElement)){
+                score ++;
+                document.getElementById("my-output-score").innerHTML = "Score: " + score;
+            } else {
+                document.getElementById("my-output-score").innerHTML = "Hai perso score: " + score;
+            }
         }); 
     }
 }
