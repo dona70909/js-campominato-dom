@@ -22,10 +22,6 @@ btnPlay.addEventListener("click", function(){
             divElement.addEventListener("click", function(){
                 divElement.classList.add("background-red"); 
             });  
-            
-            
-            
-            
         } */
         drawBox(gridContainer,"my-grid-square","my-grid-square-one","background-orange",100,"border-red", false);
         
