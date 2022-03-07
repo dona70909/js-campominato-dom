@@ -78,6 +78,7 @@ btnPlay.addEventListener("click", function(){
 * @param {*} N value of how many numbers you want  
 */
 // % random + drowbox
+
 function drawBox(outsideElement,classNameOne,classNameTwo,classNameThree,N,classBorderContainer){
     const arrayNumbersFunction = randomNumber(N,1);
     console.log(arrayNumbersFunction);
@@ -92,27 +93,22 @@ function drawBox(outsideElement,classNameOne,classNameTwo,classNameThree,N,class
         outsideElement.classList.add(classBorderContainer);
         insideElement.classList.add(classNameOne,classNameTwo);
         insideElement.innerHTML = arrayNumbersFunction[i];
-        
+        /* checkNumberBomb(arrayBombs, arrayNumbersFunction[i],"back-bomb",classNameThree,insideElement) */
         // £ event click and the background changes
-        insideElement.addEventListener("click", function(){
+        insideElement.addEventListener("click", function() {
             // # check if the Number inside the square is equal to a bomb number
             if(!checkNumberBomb(arrayBombs, arrayNumbersFunction[i],"back-bomb",classNameThree,insideElement)){
                 score ++;
                 document.getElementById("my-output-score").innerHTML = "Hai vinto, score " + score;
-                
             } else {
                 document.getElementById("my-output-score").innerHTML = "Hai perso " + score;
-            }
-        }); 
+            } 
+        });
     }
+    
+    
+    
 }
-
-/* if(!checkNumberBomb(arrayBombs, arrayNumbersFunction[i],"back-bomb",classNameThree,insideElement)){
-    score ++;
-    document.getElementById("my-output-score").innerHTML = "Hai vinto, score " + score;
-} else {
-    document.getElementById("my-output-score").innerHTML = "Hai perso " + score;
-} */
 
 /**
 * Function that creates N unique numbers from minimun(min) value to N(maximun)
@@ -148,15 +144,3 @@ function checkNumberBomb (array,number,classOne,classTwo,element){
     }
 }
 
-
-/* insideElement.addEventListener("click", function(){
-    // # check if the Number inside the square is equal to a bomb number
-    if(!checkNumberBomb(arrayBombs, arrayNumbersFunction[i],"back-bomb",classNameThree,insideElement)){
-        score ++;
-        document.getElementById("my-output-score").innerHTML = "Hai vinto, score " + score;
-        
-    } else {
-        document.getElementById("my-output-score").innerHTML = "Hai perso " + score;
-        check = false;
-    }
-});  */
