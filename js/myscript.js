@@ -1,4 +1,4 @@
-
+const numberBombs = 16;
 const btnPlay = document.getElementById("my-btn-play");
 btnPlay.addEventListener("click", function(){
     
@@ -25,7 +25,7 @@ btnPlay.addEventListener("click", function(){
             
             
         } */
-        drawBox(gridContainer,"my-grid-square","my-grid-square-one","background-red",100,"border-red");
+        drawBox(gridContainer,"my-grid-square","my-grid-square-one","background-orange",100,"border-red");
         
         
     } else if(selectValue == 2) {
@@ -80,25 +80,31 @@ btnPlay.addEventListener("click", function(){
 // % random + drowbox
 function drawBox(outsideElement,classNameOne,classNameTwo,classNameThree,N,classBorderContainer){
     const arrayNumbersFunction = randomNumber(N,1);
+    // # create an array of 16 numbers each one between a range (1 and numberOfSquares(THAT I CALLED N))
+    const arrayBombs = randomNumber(numberBombs,1);
+    console.log(arrayBombs);
     for (let i = 0; i < N ;i++){
         let insideElement = document.createElement("div");
         outsideElement.appendChild(insideElement);
         outsideElement.classList.add(classBorderContainer);
         insideElement.classList.add(classNameOne,classNameTwo);
         insideElement.innerHTML = arrayNumbersFunction[i];
+        // £ event click and the background changes
         insideElement.addEventListener("click", function(){
-            insideElement.classList.add(classNameThree); 
+            /*insideElement.classList.add(classNameThree);*/
+            // # check if the Number inside the square is equal to a bomb number
+            checkNumberBomb(arrayBombs, arrayNumbersFunction[i],"back-bomb",classNameThree,insideElement);
         }); 
     }
 }
 
 /**
- * Function that creates N unique numbers from minimun(min) value to N(maximun)
- * 
- * @param {*} N how many numbers you would like and max value 
- * @param {*} min minmun value of your numbers array
- * @returns 
- */
+* Function that creates N unique numbers from minimun(min) value to N(maximun)
+* 
+* @param {*} N how many numbers you would like and max value 
+* @param {*} min minmun value of your numbers array
+* @returns 
+*/
 
 function randomNumber(N,min){
     const arrayNumbers = [];
@@ -112,5 +118,16 @@ function randomNumber(N,min){
     
 }
 
-console.log(randomNumber(20,1));
 
+// # check if the Number inside the square is equal to a bomb number
+function checkNumberBomb (array,number,classOne,classTwo,element){
+    for(let i = 0; i < array.length; i++){
+        if(array.includes(number)){
+            element.classList.add(classOne);
+            return true;
+        } else {
+            element.classList.add(classTwo);
+            return false;
+        }
+    }
+}

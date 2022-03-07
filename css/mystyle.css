@@ -41,10 +41,10 @@ select {
     
 }
 
-.background-red{
-    background-color: red;
+.background-orange{
+    background-color: orange;
     color: white;
-    box-shadow: -1px -1px 1px rgb(206, 26, 26);
+    box-shadow: -1px -1px 1px orange;
 }
 
 .border-red{
@@ -83,4 +83,8 @@ select {
 
 .border-green{
     border: 1px solid green;
+}
+
+.back-bomb{
+    background-color: rgb(168, 18, 25);
 }
