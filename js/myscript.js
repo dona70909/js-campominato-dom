@@ -85,10 +85,10 @@ btnPlay.addEventListener("click", function(){
 // nel caso in cui clicco su una bomba
 
 
-function drawBox(outsideElement,classNameOne,classNameTwo,classNameThree,N,classBorderContainer, gameOver){
+function drawBox(outsideElement,classNameOne,classNameTwo,classNameThree,N,classBorderContainer,gameOver){
     const arrayNumbersFunction = randomNumber(N,1);
     console.log(arrayNumbersFunction);
-    // # create an array of 16 numbers each one between a range (1 and numberOfSquares(THAT I CALLED N))
+    // # creates an array of 16 numbers each one between a range (1 and numberOfSquares(THAT I CALLED N))
     const arrayBombs = randomNumber(numberBombs,1);
     
     let score = 0;
@@ -98,12 +98,13 @@ function drawBox(outsideElement,classNameOne,classNameTwo,classNameThree,N,class
         outsideElement.appendChild(insideElement);
         outsideElement.classList.add(classBorderContainer);
         insideElement.classList.add(classNameOne,classNameTwo);
-        insideElement.innerHTML = arrayNumbersFunction[i];
+        
         /* checkNumberBomb(arrayBombs, arrayNumbersFunction[i],"back-bomb",classNameThree,insideElement) */
         // £ event click and the background changes
         insideElement.addEventListener("click", function() {
             if(!gameOver){
                 // # check if the Number inside the square is equal to a bomb number
+                insideElement.innerHTML = arrayNumbersFunction[i];
                 if(!checkNumberBomb(arrayBombs, arrayNumbersFunction[i],"back-bomb",classNameThree,insideElement)){
                     score ++;
                     document.getElementById("my-output-score").innerHTML = "Hai vinto, score " + score;
@@ -145,7 +146,6 @@ function checkNumberBomb (array,number,classOne,classTwo,element){
             return true;
         } else {
             element.classList.add(classTwo);
-            return false;
         }
     }
 }
