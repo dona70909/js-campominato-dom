@@ -154,16 +154,15 @@ function checkNumberBomb (array,number){
     }
 }
 /* checkArray (arrayBombs,arrayNumbersFunction,arrayOfDiv,"back-bomb"); */
+/* checkArray (arrayBombs,arrayNumbersFunction,arrayOfDiv,"back-bomb"); */
 function checkArray (array,arrayToCheck,arrayParent,classBomb){
     for(let i = 0; i < arrayToCheck.length; i++){
-        for(let c = 0; c < array.length ; c++){
-            if(arrayToCheck[i] === array[c]){
-                arrayParent[i].classList.add(classBomb);
-                arrayParent[i].innerHTML = arrayToCheck[i];
-            } else {
-                console.log("non sono una bomba");
-                
-            }
+        if(array.includes(arrayToCheck[i])){
+            arrayParent[i].classList.add(classBomb);
+            arrayParent[i].innerHTML = arrayToCheck[i];
+        } else {
+            console.log("non sono una bomba");
+            
         }
     }
 
@@ -171,4 +170,6 @@ function checkArray (array,arrayToCheck,arrayParent,classBomb){
     console.log(array);
     console.log(arrayParent);
 } 
+
+
 
