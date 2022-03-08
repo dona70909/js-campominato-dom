@@ -160,10 +160,7 @@ function checkArray (array,arrayToCheck,arrayParent,classBomb){
         if(array.includes(arrayToCheck[i])){
             arrayParent[i].classList.add(classBomb);
             arrayParent[i].innerHTML = arrayToCheck[i];
-        } else {
-            console.log("non sono una bomba");
-            
-        }
+        } 
     }
 
     console.log(arrayToCheck);
