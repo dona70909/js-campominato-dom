@@ -153,7 +153,8 @@ function checkNumberBomb (array,number){
         } 
     }
 }
-/* checkArray (arrayBombs,arrayNumbersFunction,arrayOfDiv,"back-bomb"); */
+
+
 /* checkArray (arrayBombs,arrayNumbersFunction,arrayOfDiv,"back-bomb"); */
 function checkArray (array,arrayToCheck,arrayParent,classBomb){
     for(let i = 0; i < arrayToCheck.length; i++){
